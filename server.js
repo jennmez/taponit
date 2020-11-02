@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 
 //pull in api routes
-const productRoutes = require('./server/api/products');
+const productRoutes = require('./api/products');
 
 const app = express();
 
@@ -33,7 +33,7 @@ app.use(function (err, req, res, next) {
   res.status(500).send(err.message || 'Internal server error.');
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
