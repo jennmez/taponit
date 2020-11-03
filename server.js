@@ -2,9 +2,6 @@ const path = require('path');
 const express = require('express');
 const { db } = require('./database');
 
-//pull in api routes
-const productRoutes = require('./api/products');
-
 const app = express();
 
 // static files
@@ -15,12 +12,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // mount routes
-// when a request begins with products, we will access
-app.use('/products', productRoutes);
+// when a request begins with api, we will access api folder and find our routes in index.js
+app.use('/api', require('./api'));
 
 //if the environment is production, make sure you send the public files
 if (process.env.NODE_ENV && process.env.NODE_ENV !== 'development') {
-  app.get('/*', (req, res) => {
+  app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
 }

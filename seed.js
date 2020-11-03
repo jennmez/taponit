@@ -75,19 +75,12 @@ const seedProducts = [
     price: 4,
     likes: 2,
   },
-  {
-    title: 'Butterkase',
-    description: 'buttery, mild',
-    imageUrl: '/images/cheese.png',
-    price: 4,
-    likes: 2,
-  },
 ];
 
 const seed = async () => {
   try {
     // db opens and clears tables
-    await db.sync({ foce: true });
+    await db.sync({ force: true });
     // creates products based on Model created
     await Product.bulkCreate(seedProducts);
   } catch (err) {
