@@ -1,21 +1,20 @@
-import './App.css';
-import { useState, useEffect } from 'react';
+import './AllCheese.css';
 import { Link } from 'react-router-dom';
 
 function AllCheese({ products }) {
-  console.log(products);
   return (
     <>
-      <div>all cheese </div>
-      {/* <div className="Cheese">
+      <div className="cheese">
         {products.map((product) => (
           <div key={product.id}>
-            <img alt="cheese" src={product.imageUrl} />
-            <Link to={`/products/${product.id}`}>{product.title}</Link>
-            <p>${(product.price / 100).toFixed(2)}</p>
+            <img className="pic" alt="cheese" src={product.imageUrl} />
+            <h2 className="title">
+              <Link to={`/products/${product.id}`}>{product.title}</Link>
+            </h2>
+            <p>Price: ${product.price.toFixed(2)}</p>
           </div>
         ))}
-      </div> */}
+      </div>
     </>
   );
 }
