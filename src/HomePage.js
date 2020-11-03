@@ -40,6 +40,7 @@ function HomePage() {
     <>
       {loading && <p>Loading...</p>}
       {error && <p>Error! Reload page please.</p>}
+      <h1>Cheeses Too Gouda To Pass Up!</h1>
       <AllCheese products={cheese} />
     </>
   );
