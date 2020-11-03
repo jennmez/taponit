@@ -1,3 +1,5 @@
+const { db, Product } = require('./database');
+
 const seedProducts = [
   {
     title: 'Gouda',
@@ -73,6 +75,39 @@ const seedProducts = [
     price: 4,
     likes: 2,
   },
+  {
+    title: 'Butterkase',
+    description: 'buttery, mild',
+    imageUrl: '/images/cheese.png',
+    price: 4,
+    likes: 2,
+  },
 ];
 
-module.exports = seedProducts;
+const seed = async () => {
+  try {
+    // db opens and clears tables
+    await db.sync({ foce: true });
+    // creates products based on Model created
+    await Product.bulkCreate(seedProducts);
+  } catch (err) {
+    console.error('seed unsuccessful', err);
+  }
+};
+
+module.exports = seed;
+
+// this module was run directly from the command line as in node xxx.js
+// ensures that everytime npm run seed is is executed it will reset the DB tables
+if (require.main === module) {
+  seed()
+    .then(() => {
+      console.log('Seeding success!');
+      db.close();
+    })
+    .catch((err) => {
+      console.error('Oh no! Something went wrong!');
+      console.error(err);
+      db.close();
+    });
+}

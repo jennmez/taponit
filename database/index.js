@@ -1,4 +1,3 @@
-const { Model } = require('sequelize');
 const { Sequelize, DataTypes } = require('sequelize');
 
 const db = new Sequelize('postgres://localhost:5432/taponit', {

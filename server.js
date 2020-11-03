@@ -1,7 +1,6 @@
 const path = require('path');
 const express = require('express');
-const { db, Product } = require('./database');
-const seedProducts = require('./database/seed');
+const { db } = require('./database');
 
 //pull in api routes
 const productRoutes = require('./api/products');
@@ -38,8 +37,8 @@ const PORT = process.env.PORT || 5000;
 async function startServer() {
   try {
     //if this were
-    await db.sync({ force: true });
-    await Product.bulkCreate(seedProducts);
+    await db.sync();
+    console.log('db sync');
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
