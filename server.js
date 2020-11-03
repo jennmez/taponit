@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const { db } = require('./database');
 
 //pull in api routes
 const productRoutes = require('./api/products');
@@ -13,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//mount routes
+// mount routes
 // when a request begins with products, we will access
 app.use('/products', productRoutes);
 
@@ -24,9 +25,6 @@ if (process.env.NODE_ENV && process.env.NODE_ENV !== 'development') {
   });
 }
 
-// once we have the DB
-// const syncDb = () => db.sync()
-
 //configure error handling middleware last
 app.use(function (err, req, res, next) {
   console.error(err);
@@ -34,6 +32,16 @@ app.use(function (err, req, res, next) {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
+//Every time the server starts, we want to sync up with the database before it starts listening for requests. db.sync() is asynchronous, and it returns a Promise so async function is needed
+async function startServer() {
+  try {
+    await db.sync();
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
+startServer();
