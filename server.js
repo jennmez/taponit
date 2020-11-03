@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
-const { db } = require('./database');
+const { db, Product } = require('./database');
+const seedProducts = require('./database/seed');
 
 //pull in api routes
 const productRoutes = require('./api/products');
@@ -36,7 +37,9 @@ const PORT = process.env.PORT || 5000;
 //Every time the server starts, we want to sync up with the database before it starts listening for requests. db.sync() is asynchronous, and it returns a Promise so async function is needed
 async function startServer() {
   try {
-    await db.sync();
+    //if this were
+    await db.sync({ force: true });
+    await Product.bulkCreate(seedProducts);
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });

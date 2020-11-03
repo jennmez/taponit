@@ -2,14 +2,16 @@ const seedProducts = [
   {
     title: 'Gouda',
     description: 'creamy, full-flavored, nutty, sweet',
-    imageUrl: '',
+    imageUrl:
+      'https://www.liveeatlearn.com/wp-content/uploads/2016/01/gouda-3-680.jpg',
     price: 5.99,
     likes: 1,
   },
   {
     title: 'Brie',
     description: 'fruity, mild, nutty, tangy',
-    imageUrl: '',
+    imageUrl:
+      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.aws.livestrongcdn.com%2Fls-article-image-640%2Fds-photo%2Fgetty%2Farticle%2F99%2F149%2F167172772.jpg&f=1&nofb=1',
     price: 7.99,
     likes: 5,
   },
@@ -17,7 +19,7 @@ const seedProducts = [
     title: 'Cheddar',
     description: 'creamy, sharp',
     imageUrl:
-      'https://cdn.dribbble.com/users/266686/screenshots/2740301/beer-icon-02.png',
+      'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fgoldenagecheese.com%2Fwp-content%2Fuploads%2F2014%2F01%2Fsharp_ched.jpg&f=1&nofb=1',
     price: 3.99,
     likes: 4,
   },
@@ -25,56 +27,52 @@ const seedProducts = [
     title: 'Camembert',
     description: 'buttery, creamy, milky, sweet',
     imageUrl:
-      'https://cdn.dribbble.com/users/266686/screenshots/2740301/beer-icon-02.png',
+      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F1.bp.blogspot.com%2F-rYfBV6l54ZQ%2FWabXgjS38HI%2FAAAAAAAALqs%2Ftozi_cLPxvERoKE44-9QMloFUw1FkCJ_wCLcBGAs%2Fs1600%2Fcamembert.jpg&f=1&nofb=1',
     price: 4.5,
     likes: 10,
   },
   {
     title: 'Provolone',
     description: 'buttery, mild, sharp, spicy, sweet, tangy',
-    imageUrl:
-      'https://cdn.dribbble.com/users/266686/screenshots/2740301/beer-icon-02.png',
+    imageUrl: '/images/cheese.png',
     price: 5,
     likes: 12,
   },
   {
     title: 'Mozzarella',
     description: 'fresh, milky',
-    imageUrl:
-      'https://cdn.dribbble.com/users/266686/screenshots/2740301/beer-icon-02.png',
+    imageUrl: '/images/cheese.png',
     price: 5,
     likes: 1,
   },
   {
     title: 'Roquefort',
     description: 'salty, sharp, tangy',
-    imageUrl:
-      'https://cdn.dribbble.com/users/266686/screenshots/2740301/beer-icon-02.png',
+    imageUrl: '/images/cheese.png',
     price: 10,
     likes: 6,
   },
   {
     title: 'Chevre',
     description: 'earthy, tangy, tart',
-    imageUrl:
-      'https://cdn.dribbble.com/users/266686/screenshots/2740301/beer-icon-02.png',
+    imageUrl: '/images/cheese.png',
     price: 10,
     likes: 12,
   },
   {
     title: 'Quark',
     description: 'mild, milky',
-    imageUrl:
-      'https://cdn.dribbble.com/users/266686/screenshots/2740301/beer-icon-02.png',
+    imageUrl: '/images/cheese.png',
     price: 5,
     likes: 4,
   },
   {
     title: 'Butterkase',
     description: 'buttery, mild',
-    imageUrl:
-      'https://cdn.dribbble.com/users/266686/screenshots/2740301/beer-icon-02.png',
+    imageUrl: '/images/cheese.png',
     price: 4,
     likes: 2,
   },
 ];
+
+module.exports = seedProducts;

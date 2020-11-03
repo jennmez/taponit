@@ -12,15 +12,13 @@ const db = new Sequelize('postgres://localhost:5432/taponit', {
 const Product = db.define('product', {
   title: {
     type: DataTypes.STRING,
-    // allowNull: false,
   },
   description: {
     type: DataTypes.TEXT,
   },
   imageUrl: {
     type: Sequelize.TEXT,
-    defaultValue:
-      'https://cdn.dribbble.com/users/266686/screenshots/2740301/beer-icon-02.png',
+    defaultValue: '/images/cheese.png',
   },
   price: {
     type: Sequelize.INTEGER,
