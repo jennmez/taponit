@@ -29,12 +29,16 @@ router.get('/products/:id', async (req, res, next) => {
 router.put('/products/:id', async (req, res, next) => {
   try {
     console.log(req.body);
-    const data = await Product.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    console.log(data);
+    const [rowsUpdated, [updatedProduct]] = await Product.update(
+      { likes: req.body.likes },
+      {
+        returning: true,
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.json(updatedProduct);
   } catch (err) {
     next(err);
   }
