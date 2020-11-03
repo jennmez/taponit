@@ -2,32 +2,27 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function App() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [cheese, setCheese] = useState([]);
+import { Switch, Route } from 'react-router-dom';
 
-  useEffect(() => {
-    async function loadCheese() {
-      try {
-        setLoading(true);
-        const response = await axios.get('/api/products');
-        const { data } = await response;
-        console.log(data);
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-        console.log('err retrieving data', error);
-      }
-    }
-    loadCheese();
-  }, []);
+import HomePage from './HomePage';
+import AllCheese from './AllCheese';
+import SingleCheese from './SingleCheese';
+
+function App() {
   return (
     <>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error! Reload page please.</p>}
-      <div className="App">
-        <p>Hello</p>
+      <div>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/products">
+            <AllCheese />
+          </Route>
+          <Route path="/products/:id">
+            <SingleCheese />
+          </Route>
+        </Switch>
       </div>
     </>
   );
