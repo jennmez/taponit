@@ -2,25 +2,28 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
+
+import NavBar from './NavBar';
 
 import HomePage from './HomePage';
-import AllCheese from './AllCheese';
-import SingleCheese from './SingleCheese';
+import CheeseList from './CheeseList';
+import CheeseDetails from './CheeseDetails';
 
 function App() {
   return (
     <>
       <div>
+        <NavBar />
         <Switch>
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route path="/products">
-            <AllCheese />
-          </Route>
           <Route path="/products/:id">
-            <SingleCheese />
+            <CheeseDetails />
+          </Route>
+          <Route path="/products">
+            <CheeseList />
           </Route>
         </Switch>
       </div>
