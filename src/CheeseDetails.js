@@ -6,8 +6,8 @@ function CheeseDetails() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [product, setSingleProduct] = useState('');
-  // console.log(product);
   const { id } = useParams();
+  console.log(id);
 
   useEffect(() => {
     async function loadCheese() {
@@ -17,15 +17,17 @@ function CheeseDetails() {
         const { data } = await response;
         // dispatch({ type: 'setCheeseList', products: data });
         setSingleProduct(data);
+        console.log(data);
         setLoading(false);
       } catch (error) {
         console.log('err retrieving data', error);
       }
     }
     loadCheese();
-  }, []);
+  }, [id]);
 
-  console.log(product);
+  // console.log(product);
+  const { title, imageUrl, price, likes } = product;
 
   return (
     <>
@@ -33,11 +35,11 @@ function CheeseDetails() {
       {error && <p>Error! Reload page please.</p>}
       <div className="Cheese">
         Hello
-        <h1>{product.title}</h1>
-        <img alt="cheese" src={product.imageUrl} />
+        <h1>{title}</h1>
+        <img alt="cheese" src={imageUrl} />
         <p>Description: {product.description}</p>
-        <p>${product.price.toFixed(2)}</p>
-        <p>{product.likes}</p>
+        <p>${price.toFixed(2)}</p>
+        <p>No. of Likes: {likes}</p>
         <button>Add Like</button>
       </div>
     </>
