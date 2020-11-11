@@ -8,7 +8,6 @@ function CheeseList() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [products, setProducts] = useState([]);
-  // const [products, dispatch] = useReducer(cheeseReducer, []);
 
   useEffect(() => {
     async function loadCheese() {
@@ -16,7 +15,6 @@ function CheeseList() {
         setLoading(true);
         const response = await axios.get('/api/products');
         const { data } = await response;
-        // dispatch({ type: 'setCheeseList', products: data });
         setProducts(data);
         setLoading(false);
       } catch (error) {
@@ -31,6 +29,7 @@ function CheeseList() {
     <>
       {loading && <p>Loading...</p>}
       {error && <p>Error! Reload page please.</p>}
+      <h2>All The Cheeses</h2>
       <div className="cheese">
         {products.map((product) => (
           <Cheese key={product.id} product={product} />

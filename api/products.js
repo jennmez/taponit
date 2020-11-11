@@ -28,7 +28,6 @@ router.get('/:id', async (req, res, next) => {
 // PUT updates the likes
 router.put('/:id', async (req, res, next) => {
   try {
-    console.log(req.body);
     const [rowsUpdated, [updatedProduct]] = await Product.update(
       { likes: req.body.likes },
       {

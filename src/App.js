@@ -1,11 +1,7 @@
 import './App.css';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import NavBar from './NavBar';
-
 import HomePage from './HomePage';
 import CheeseList from './CheeseList';
 import CheeseDetails from './CheeseDetails';
